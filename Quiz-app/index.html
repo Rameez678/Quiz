@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app">
+    <!-- Header -->
+    <header class="app-header">
+      <h1>Web Dev Quiz</h1>
+      <div class="header-actions">
+        <button id="mute-toggle" aria-pressed="false" title="Toggle sound">🔊</button>
+        <button id="view-leaderboard" title="View leaderboard">🏆</button>
+      </div>
+    </header>
+
+    <!-- Setup Screen -->
+    <section id="setup-screen" class="card active fade-in">
+      <h2>Setup</h2>
+      <div class="controls">
+        <label>
+          Category
+          <select id="category">
+            <option value="all">All</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+        </label>
+
+        <label>
+          Difficulty
+          <select id="difficulty">
+            <option value="easy">Easy (20s)</option>
+            <option value="hard">Hard (10s)</option>
+          </select>
+        </label>
+
+        <label>
+          Number of Questions
+          <select id="question-count">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="start-btn" class="primary">Start Quiz</button>
+
+      <div class="best-score" id="best-score-wrap" hidden>
+        <span>Best Score:</span> <strong id="best-score-text"></strong>
+      </div>
+    </section>
+
+    <!-- Quiz Screen -->
+    <section id="quiz-screen" class="card">
+      <div class="progress-bar">
+        <div id="progress" class="progress"></div>
+      </div>
+
+      <div class="quiz-top">
+        <div id="question-count-label">Q 1 / 10</div>
+        <div id="timer" aria-live="polite">20s</div>
+      </div>
+
+      <h2 id="question" class="question">Question</h2>
+      <ul id="answers" class="answers"></ul>
+
+      <div class="quiz-actions">
+        <button id="next-btn" class="primary" disabled>Next</button>
+      </div>
+    </section>
+
+    <!-- Results Screen -->
+    <section id="results-screen" class="card">
+      <h2>Results</h2>
+      <p id="score-summary" class="score-summary"></p>
+
+      <div id="review" class="review"></div>
+
+      <div class="results-actions">
+        <button id="play-again" class="primary">Play Again</button>
+        <button id="save-score" class="secondary">Save to Leaderboard</button>
+      </div>
+    </section>
+
+    <!-- Leaderboard Modal -->
+    <dialog id="leaderboard-modal">
+      <form method="dialog" class="leaderboard">
+        <h3>Leaderboard</h3>
+        <ol id="leaderboard-list" class="board"></ol>
+        <menu>
+          <button value="ok" class="primary">Close</button>
+          <button id="clear-leaderboard" type="button" class="danger">Clear</button>
+        </menu>
+      </form>
+    </dialog>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
